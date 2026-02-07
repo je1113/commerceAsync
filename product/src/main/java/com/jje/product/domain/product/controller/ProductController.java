@@ -1,0 +1,49 @@
+package com.jje.product.domain.product.controller;
+
+import com.jje.product.domain.product.dto.ProductCreateRequest;
+import com.jje.product.domain.product.dto.ProductResponse;
+import com.jje.product.domain.product.dto.ProductUpdateRequest;
+import com.jje.product.domain.product.service.ProductService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/products")
+@RequiredArgsConstructor
+public class ProductController {
+
+    private final ProductService productService;
+
+    @PostMapping
+    public ResponseEntity<ProductResponse> create(@RequestBody @Valid ProductCreateRequest request) {
+        ProductResponse response = productService.create(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductResponse> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(productService.getById(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<ProductResponse>> getAll(Pageable pageable) {
+        return ResponseEntity.ok(productService.getAll(pageable));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponse> update(@PathVariable Long id,
+                                                   @RequestBody @Valid ProductUpdateRequest request) {
+        return ResponseEntity.ok(productService.update(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        productService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+}
