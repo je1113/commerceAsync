@@ -1,7 +1,9 @@
 package com.jje.payment.domain.payment.event;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * 결제 실패 이벤트.
@@ -9,6 +11,8 @@ import lombok.Getter;
  */
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PaymentFailedEvent {
 
     private Long paymentId;

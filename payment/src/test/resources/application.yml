@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: payment
+  datasource:
+    url: jdbc:h2:mem:payment-test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration

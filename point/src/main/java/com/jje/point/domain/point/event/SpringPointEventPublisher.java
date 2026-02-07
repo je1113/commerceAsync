@@ -2,7 +2,7 @@ package com.jje.point.domain.point.event;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class SpringPointEventPublisher implements PointEventPublisher {
 
-    private final ApplicationEventPublisher applicationEventPublisher;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Override
     public void publishRestored(PointRestoredEvent event) {
         log.info("[EVENT] PointRestored 발행 - userId={}, amount={}, orderId={}",
                 event.getUserId(), event.getAmount(), event.getOrderId());
-        applicationEventPublisher.publishEvent(event);
+        kafkaTemplate.send("point-restored", String.valueOf(event.getOrderId()), event);
     }
 }
