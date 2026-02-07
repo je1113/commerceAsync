@@ -1,0 +1,24 @@
+package com.jje.user.common.exception;
+
+import lombok.Builder;
+import lombok.Getter;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Getter
+@Builder
+public class ErrorResponse {
+
+    private int status;
+    private String message;
+    private List<FieldError> errors;
+    private LocalDateTime timestamp;
+
+    @Getter
+    @Builder
+    public static class FieldError {
+        private String field;
+        private String message;
+    }
+}
