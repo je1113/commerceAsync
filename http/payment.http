@@ -1,0 +1,8 @@
+### 결제 조회 (by paymentId)
+GET http://localhost:8083/api/payments/1
+
+### 주문별 결제 조회
+GET http://localhost:8083/api/payments/order/1
+
+### 환불 처리
+POST http://localhost:8083/api/payments/order/1/refund

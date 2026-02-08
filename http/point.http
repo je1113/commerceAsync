@@ -1,0 +1,35 @@
+### 포인트 적립
+POST http://localhost:8085/api/points/earn
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "amount": 50000,
+  "description": "신규 가입 축하 포인트"
+}
+
+### 포인트 추가 적립
+POST http://localhost:8085/api/points/earn
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "amount": 10000,
+  "description": "이벤트 적립"
+}
+
+### 포인트 사용
+POST http://localhost:8085/api/points/use
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "amount": 5000,
+  "orderId": 1
+}
+
+### 포인트 잔액 조회
+GET http://localhost:8085/api/points/1
+
+### 포인트 이력 조회
+GET http://localhost:8085/api/points/1/history

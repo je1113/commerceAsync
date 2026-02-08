@@ -1,0 +1,96 @@
+### 카테고리 등록 - 전자제품
+POST http://localhost:8081/api/categories
+Content-Type: application/json
+
+{
+  "name": "전자제품"
+}
+
+### 카테고리 등록 - 의류
+POST http://localhost:8081/api/categories
+Content-Type: application/json
+
+{
+  "name": "의류"
+}
+
+### 하위 카테고리 등록 - 노트북 (전자제품 하위)
+POST http://localhost:8081/api/categories
+Content-Type: application/json
+
+{
+  "name": "노트북",
+  "parentId": 1
+}
+
+### 카테고리 목록 조회
+GET http://localhost:8081/api/categories
+
+### 카테고리 단건 조회
+GET http://localhost:8081/api/categories/1
+
+### 카테고리 수정
+PUT http://localhost:8081/api/categories/2
+Content-Type: application/json
+
+{
+  "name": "패션의류"
+}
+
+### 카테고리 삭제
+DELETE http://localhost:8081/api/categories/2
+
+### ---
+
+### 상품 등록 - 맥북
+POST http://localhost:8081/api/products
+Content-Type: application/json
+
+{
+  "name": "MacBook Pro 16인치",
+  "description": "Apple M3 Max 칩, 36GB 메모리, 1TB SSD",
+  "price": 3690000,
+  "categoryId": 1
+}
+
+### 상품 등록 - 갤럭시북
+POST http://localhost:8081/api/products
+Content-Type: application/json
+
+{
+  "name": "Galaxy Book4 Pro",
+  "description": "Intel Core Ultra 7, 16GB, 512GB SSD",
+  "price": 1890000,
+  "categoryId": 1
+}
+
+### 상품 등록 - 아이패드
+POST http://localhost:8081/api/products
+Content-Type: application/json
+
+{
+  "name": "iPad Pro 13인치",
+  "description": "M4 칩, 256GB, Wi-Fi",
+  "price": 1499000,
+  "categoryId": 1
+}
+
+### 상품 목록 조회
+GET http://localhost:8081/api/products
+
+### 상품 단건 조회
+GET http://localhost:8081/api/products/1
+
+### 상품 수정
+PUT http://localhost:8081/api/products/1
+Content-Type: application/json
+
+{
+  "name": "MacBook Pro 16인치 (2024)",
+  "description": "Apple M3 Max 칩, 48GB 메모리, 1TB SSD - 업그레이드 모델",
+  "price": 4290000,
+  "categoryId": 1
+}
+
+### 상품 삭제
+DELETE http://localhost:8081/api/products/3

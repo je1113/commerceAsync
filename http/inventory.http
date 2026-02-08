@@ -1,0 +1,53 @@
+### 재고 등록 - 맥북 (productId: 1)
+POST http://localhost:8086/api/inventories
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 100
+}
+
+### 재고 등록 - 갤럭시북 (productId: 2)
+POST http://localhost:8086/api/inventories
+Content-Type: application/json
+
+{
+  "productId": 2,
+  "quantity": 50
+}
+
+### 재고 등록 - 아이패드 (productId: 3)
+POST http://localhost:8086/api/inventories
+Content-Type: application/json
+
+{
+  "productId": 3,
+  "quantity": 200
+}
+
+### 재고 조회
+GET http://localhost:8086/api/inventories/product/1
+
+### 재고 수정
+PUT http://localhost:8086/api/inventories/product/1
+Content-Type: application/json
+
+{
+  "quantity": 150
+}
+
+### 재고 차감
+POST http://localhost:8086/api/inventories/product/1/deduct
+Content-Type: application/json
+
+{
+  "quantity": 2
+}
+
+### 재고 복구
+POST http://localhost:8086/api/inventories/product/1/restore
+Content-Type: application/json
+
+{
+  "quantity": 2
+}
